@@ -69,6 +69,7 @@ ARG BUILD_DEPENDENCIES="              \
         libvncserver-dev              \
         libwebsockets-dev             \
         libwebp-dev                   \
+        libvorbis-dev                 \
         make"
 
 # Do not require interaction during build
