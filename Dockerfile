@@ -37,12 +37,13 @@ RUN apk add --no-cache                \
         libjpeg-turbo-dev             \
         libpng-dev                    \
         libtool                       \
+        libvorbis-dev                 \
         libwebp-dev                   \
         make                          \
         openssl1.1-compat-dev         \
         pango-dev                     \
         pulseaudio-dev                \
-        util-linux-dev
+        util-linux-dev                
 
 # Copy source to container for sake of build
 ARG BUILD_DIR=/tmp/guacamole-server
