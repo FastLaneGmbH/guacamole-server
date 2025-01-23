@@ -111,7 +111,7 @@ ARG DEBIAN_RELEASE=buster-backports
 # Add repository for specified Debian release if not already present in
 # sources.list
 RUN grep " ${DEBIAN_RELEASE} " /etc/apt/sources.list || echo >> /etc/apt/sources.list \
-    "deb http://deb.debian.org/debian ${DEBIAN_RELEASE} main contrib non-free"
+    "deb http://archive.debian.org/debian ${DEBIAN_RELEASE} main contrib non-free"
 
 #
 # Base directory for installed build artifacts. See also the
