@@ -43,6 +43,17 @@
 #define GUAC_TERMINAL_MAX_CHAR_WIDTH 2
 
 /**
+ * The size of margins between the console text and the border in mm.
+ */
+#define GUAC_TERMINAL_MARGINS 2
+
+/**
+ * 1 inch is 25.4 millimeters, and we can therefore use the following
+ * to create a mm to px formula: (mm × dpi) ÷ 25.4 = px.
+ */
+#define GUAC_TERMINAL_MM_PER_INCH 25.4
+
+/**
  * All available terminal operations which affect character cells.
  */
 typedef enum guac_terminal_operation_type {
@@ -120,6 +131,11 @@ typedef struct guac_terminal_display {
      * The height of the screen, in characters.
      */
     int height;
+
+    /**
+     * The size of margins between the console text and the border in pixels.
+     */
+    int margin;
 
     /**
      * The description of the font to use for rendering.
@@ -208,6 +224,12 @@ typedef struct guac_terminal_display {
      * The column that the selection ends at.
      */
     int selection_end_column;
+
+    /**
+     * Whether there are GUAC_CHAR_SET operations that need to be flushed
+     * to the display.
+     */
+    bool unflushed_set;
 
 } guac_terminal_display;
 
@@ -302,6 +324,18 @@ void guac_terminal_display_resize(guac_terminal_display* display, int width, int
 
 /**
  * Flushes all pending operations within the given guac_terminal_display.
+ *
+ * @param display
+ *     The terminal display whose pending operations are being flushed.
+ */
+void guac_terminal_display_flush_operations(guac_terminal_display* display);
+
+/**
+ * Flushes all pending operations within the given guac_terminal_display,
+ * then flushes the display surface.
+ *
+ * @param display
+ *     The terminal display to flush.
  */
 void guac_terminal_display_flush(guac_terminal_display* display);
 
