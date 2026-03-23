@@ -50,7 +50,8 @@ ARG PREFIX_DIR=/opt/guacamole
 # library (these can be overridden at build time if a specific version is
 # needed)
 #
-ARG WITH_FREERDP="${FREERDP_VERSION}(\.\d+)+"
+#ARG WITH_FREERDP="${FREERDP_VERSION}(\.\d+)+"
+ARG WITH_FREERDP="2.11.7"
 ARG WITH_LIBSSH2='libssh2-\d+(\.\d+)+'
 ARG WITH_LIBTELNET='\d+(\.\d+)+'
 ARG WITH_LIBVNCCLIENT='LibVNCServer-\d+(\.\d+)+'
@@ -67,7 +68,7 @@ ARG FREERDP_ARM_OPTS=""
 ARG FREERDP_OPTS="\
     -DBUILTIN_CHANNELS=OFF \
     -DCHANNEL_URBDRC=OFF \
-    -DWITH_ALSA=OFF \
+    -DWITH_ALSA=ON \
     -DWITH_CAIRO=ON \
     -DWITH_CHANNELS=ON \
     -DWITH_CLIENT=ON \
@@ -87,7 +88,7 @@ ARG FREERDP_OPTS="\
     -DWITH_OSS=OFF \
     -DWITH_PCSC=OFF \
     -DWITH_PKCS11=OFF \
-    -DWITH_PULSE=OFF \
+    -DWITH_PULSE=ON \
     -DWITH_SERVER=OFF \
     -DWITH_SERVER_INTERFACE=OFF \
     -DWITH_SHADOW_MAC=OFF \
@@ -174,8 +175,9 @@ RUN apk add --no-cache                \
         krb5-dev                      \
         libjpeg-turbo-dev             \
         libpng-dev                    \
-        libtool						  \
-        libvorbis-dev  				  \
+        libpulse-dev                  \
+        libtool                       \
+        libvorbis-dev                 \
         libwebp-dev                   \
         make                          \
         openssl1.1-compat-dev         \
