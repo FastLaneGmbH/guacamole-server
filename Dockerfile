@@ -68,7 +68,7 @@ ARG FREERDP_ARM_OPTS=""
 ARG FREERDP_OPTS="\
     -DBUILTIN_CHANNELS=OFF \
     -DCHANNEL_URBDRC=OFF \
-    -DWITH_ALSA=ON \
+    -DWITH_ALSA=OFF \
     -DWITH_CAIRO=ON \
     -DWITH_CHANNELS=ON \
     -DWITH_CLIENT=ON \
@@ -175,7 +175,6 @@ RUN apk add --no-cache                \
         krb5-dev                      \
         libjpeg-turbo-dev             \
         libpng-dev                    \
-        libpulse-dev                  \
         libtool                       \
         libvorbis-dev                 \
         libwebp-dev                   \
